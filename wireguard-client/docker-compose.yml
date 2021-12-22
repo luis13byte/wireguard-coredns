@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
   wireguard:
-    image: linuxserver/wireguard:version-v1.0.20210424
-    container_name: cs01wireguard-client01
+    image: linuxserver/wireguard:1.0.20210914
+    container_name: cs30wireguard-client01
     cap_add:
       - NET_ADMIN
       - SYS_MODULE

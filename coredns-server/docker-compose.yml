@@ -1,7 +1,7 @@
 services:
   coredns:
     image: coredns/coredns:1.8.6
-    container_name: coredns-server
+    container_name: cs30coredns01
     restart: always
     expose:
     - '53'
