@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  wireguard:
+    image: linuxserver/wireguard:version-v1.0.20210424
+    container_name: cs01wireguard01
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - SERVERURL= #public ip / domain
+      - SERVERPORT=51820 #optional
+      - PEERS=2 #optional
+      - PEERDNS=8.8.8.8 #optional
+      - INTERNAL_SUBNET=10.13.18.0 #optional
+      - ALLOWEDIPS=0.0.0.0/0 #optional
+    volumes:
+      - ./disk/config:/config
+      - /lib/modules:/lib/modules
+      - /usr/src:/usr/src
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
