@@ -3,11 +3,10 @@ services:
     image: coredns/coredns:1.8.6
     container_name: cs30coredns01
     restart: always
+    command: -conf /root/Corefile
     expose:
-    - '53'
     - '53/udp'
     ports:
-    - '5300:53'
-    - '5300:53/udp'
+    - '53:53/udp'
     volumes:
-     - './config:/root'
+     - '$PWD/config:/root'
